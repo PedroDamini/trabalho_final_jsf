@@ -1,0 +1,121 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="jakarta.faces.html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="jakarta.faces.core">
+    <h:head>
+        <title>Projeto Aluguel</title>
+    </h:head>
+    <h:body>
+        <h:form id="frmList">
+            <h:panelGroup id="pngList">
+                <p:fieldset toggleable="true">
+                    <p:dataTable id="datalist" value="#{apartamentoController.apartamentoList}" var="item"  
+                                 paginator="true"
+                                 rows="3"
+                                 rowsPerPageTemplate="5,10,50,100"
+                                 emptyMessage="Nenhum apartamento cadastrado..."
+                                 >
+
+                        <p:column width="4%" sortBy="#{item.id}" filterBy="#{item.id}">
+                            <f:facet name="header">
+                                <h:outputText value="ID"/>
+                            </f:facet>
+                            <h:outputText value="#{item.id}"/>
+                        </p:column>
+
+                        <p:column width="10%" sortBy="#{item.apartamento}" filterBy="#{item.apartamento}">
+                            <f:facet name="header">
+                                <h:outputText value="Apartamento"/>
+                            </f:facet>
+                            <h:outputText value="#{item.apartamento}"/>
+                        </p:column>
+
+                        <p:column width="6%" sortBy="#{item.aluguel}" filterBy="#{item.aluguel}">
+                            <f:facet name="header">
+                                <h:outputText value="Aluguel"/>
+                            </f:facet>
+                            <h:outputText value="#{item.aluguel}">
+                            </h:outputText>
+                        </p:column>
+
+                        <p:column width="6%" sortBy="#{item.condominio}" filterBy="#{item.condominio}">
+                            <f:facet name="header">
+                                <h:outputText value="Condominio"/>
+                            </f:facet>
+                            <h:outputText value="#{item.condominio}">
+                            </h:outputText>
+                        </p:column>
+
+                        <p:column width="8%" sortBy="#{item.endereco}" filterBy="#{item.endereco}">
+                            <f:facet name="header">
+                                <h:outputText value="Endereco"/>
+                            </f:facet>
+                            <h:outputText value="#{item.endereco}"/>
+                        </p:column>
+
+                        <p:column width="5%" sortBy="#{item.metragem}" filterBy="#{item.metragem}">
+                            <f:facet name="header">
+                                <h:outputText value="Metragem"/>
+                            </f:facet>
+                            <h:outputText value="#{item.metragem}"/>
+                        </p:column>
+
+                        <f:facet name="footer">
+                            <!--Botão utilizado para abrir a modal de criação -->
+                            <p:commandButton id="btnCreate" value="Incluir Apartamento"  icon="pi pi-file" 
+                                             onclick="PF('dlgCreate').show()"/> 
+                        </f:facet>
+                    </p:dataTable>
+                </p:fieldset>
+            </h:panelGroup>
+        </h:form>
+
+        <p:dialog header="Nova Apartamento" widgetVar="dlgCreate" height="400" width="600" showEffect="fade" modal="true">
+            <h:form id="CreateForm">
+                <p:growl id="growl" showDetail="true" />
+
+                <div class="field col-12 md:col-4">
+                    <p:outputLabel id="oplApartamento" value="Apartamento:" for="iptApartamento"/>
+                    <p:inputText id="iptApartamento" label="Apartamento" required="true" 
+                                 requiredMessage="O atributo apartamento é obrigatório"
+                                 value="#{apartamentoController.apartamento.apartamento}" maxlength="7" />
+                </div>
+
+                <div class="field col-12 md:col-4">
+                    <p:outputLabel id="oplAluguel" value="Aluguel" for="iptAluguel"/>
+                    <p:inputNumber id="iptAluguel" required="true" 
+                                   requiredMessage="O atributo Aluguel é obrigatório"
+                                   value="#{apartamentoController.apartamento.aluguel}"
+                                   symbolPosition="s" decimalSeparator="," thousandSeparator="." />
+                </div>
+
+                <p:outputLabel id="oplCondominio" value="Condominio:" for="iptCondominio"/>
+                <p:inputNumber id="iptCondominio" label="Condominio" required="true" 
+                               requiredMessage="O atributo condominio é obrigatório"
+                               value="#{apartamentoController.apartamento.condominio}" decimalPlaces="2" >
+                </p:inputNumber>
+                
+                <div class="field col-12 md:col-4">
+                    <p:outputLabel id="oplEndereco" value="Endereco:" for="iptEndereco"/>
+                    <p:inputText id="iptEndereco" label="Endereco" required="true" 
+                                 requiredMessage="O atributo endereco é obrigatório"
+                                 value="#{apartamentoController.apartamento.endereco}" maxlength="50" />
+                </div>
+                
+                <div class="field col-12 md:col-4">
+                    <p:outputLabel id="oplMetragem" value="Metragem" for="iptMetragem"/>
+                    <p:inputNumber id="iptMetragem" required="true" 
+                                   requiredMessage="O atributo Metragem é obrigatório"
+                                   value="#{apartamentoController.apartamento.metragem}"
+                                   symbolPosition="s" decimalSeparator="," thousandSeparator="." />
+                </div>
+
+
+                <p:commandButton id="btnCadastrar" value="Cadastrar" update="@form, frmList" icon="pi pi-save"
+                                 action="#{apartamentoController.adicionarApartamento()}" onclick="dlgCreate.hide()"/>
+            </h:form>
+        </p:dialog>
+    </h:body>
+</html>
