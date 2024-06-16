@@ -75,4 +75,30 @@ public class ApartamentoController implements Serializable {
         apartamento = new ApartamentoEntity();
     }
     
+//    public void editarApartamento() {        
+//        ejbFacade.edit(selected);        
+//        //efine o objeto selected como nulo
+//        selected = null;
+//        //exibindo mensagem
+//        FacesMessage fm = new FacesMessage(
+//                FacesMessage.SEVERITY_INFO,
+//                "Sucesso!",
+//                "Registro alterado com sucesso.");
+//        FacesContext.getCurrentInstance().addMessage(null, fm);
+//    }
+
+    /**
+     * Método utilizado para deletar uma pessoa da tabela
+     */
+//    public void deletarApartamento() {
+//        int index = apartamentoList.indexOf(selected);
+//        selected = null;
+//        //exibindo mensagem
+//        FacesMessage fm = new FacesMessage(
+//                FacesMessage.SEVERITY_INFO,
+//                "Sucesso!",
+//                "Registro excluído com sucesso.");
+//        FacesContext.getCurrentInstance().addMessage(null, fm);
+//    }
+//    
 }

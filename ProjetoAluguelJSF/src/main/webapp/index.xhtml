@@ -72,49 +72,50 @@
             </h:panelGroup>
         </h:form>
 
-        <p:dialog header="Nova Apartamento" widgetVar="dlgCreate" height="400" width="600" showEffect="fade" modal="true">
+        <p:dialog header="Novo Apartamento" widgetVar="dlgCreate" height="400" width="600" showEffect="fade" modal="true">
             <h:form id="CreateForm">
-                <p:growl id="growl" showDetail="true" />
+                <h:panelGrid>
+                    <p:growl id="growl" showDetail="true" />
 
-                <div class="field col-12 md:col-4">
-                    <p:outputLabel id="oplApartamento" value="Apartamento:" for="iptApartamento"/>
-                    <p:inputText id="iptApartamento" label="Apartamento" required="true" 
-                                 requiredMessage="O atributo apartamento é obrigatório"
-                                 value="#{apartamentoController.apartamento.apartamento}" maxlength="7" />
-                </div>
+                    <div class="field col-12 md:col-4">
+                        <p:outputLabel id="oplApartamento" value="Apartamento:" for="iptApartamento"/>
+                        <p:inputText id="iptApartamento" label="Apartamento" required="true" 
+                                     requiredMessage="O atributo apartamento é obrigatório"
+                                     value="#{apartamentoController.apartamento.apartamento}" maxlength="7" />
+                    </div>
 
-                <div class="field col-12 md:col-4">
-                    <p:outputLabel id="oplAluguel" value="Aluguel" for="iptAluguel"/>
-                    <p:inputNumber id="iptAluguel" required="true" 
-                                   requiredMessage="O atributo Aluguel é obrigatório"
-                                   value="#{apartamentoController.apartamento.aluguel}"
-                                   symbolPosition="s" decimalSeparator="," thousandSeparator="." />
-                </div>
+                    <div class="field col-12 md:col-4">
+                        <p:outputLabel id="oplAluguel" value="Aluguel" for="iptAluguel"/>
+                        <p:inputNumber id="iptAluguel" required="true" 
+                                       requiredMessage="O atributo Aluguel é obrigatório"
+                                       value="#{apartamentoController.apartamento.aluguel}"
+                                       symbolPosition="s" decimalSeparator="," thousandSeparator="." />
+                    </div>
 
-                <p:outputLabel id="oplCondominio" value="Condominio:" for="iptCondominio"/>
-                <p:inputNumber id="iptCondominio" label="Condominio" required="true" 
-                               requiredMessage="O atributo condominio é obrigatório"
-                               value="#{apartamentoController.apartamento.condominio}" decimalPlaces="2" >
-                </p:inputNumber>
-                
-                <div class="field col-12 md:col-4">
-                    <p:outputLabel id="oplEndereco" value="Endereco:" for="iptEndereco"/>
-                    <p:inputText id="iptEndereco" label="Endereco" required="true" 
-                                 requiredMessage="O atributo endereco é obrigatório"
-                                 value="#{apartamentoController.apartamento.endereco}" maxlength="50" />
-                </div>
-                
-                <div class="field col-12 md:col-4">
-                    <p:outputLabel id="oplMetragem" value="Metragem" for="iptMetragem"/>
-                    <p:inputNumber id="iptMetragem" required="true" 
-                                   requiredMessage="O atributo Metragem é obrigatório"
-                                   value="#{apartamentoController.apartamento.metragem}"
-                                   symbolPosition="s" decimalSeparator="," thousandSeparator="." />
-                </div>
+                    <p:outputLabel id="oplCondominio" value="Condominio:" for="iptCondominio"/>
+                    <p:inputNumber id="iptCondominio" label="Condominio" required="true" 
+                                   requiredMessage="O atributo condominio é obrigatório"
+                                   value="#{apartamentoController.apartamento.condominio}" decimalPlaces="2" >
+                    </p:inputNumber>
 
+                    <div class="field col-12 md:col-4">
+                        <p:outputLabel id="oplEndereco" value="Endereco:" for="iptEndereco"/>
+                        <p:inputText id="iptEndereco" label="Endereco" required="true" 
+                                     requiredMessage="O atributo endereco é obrigatório"
+                                     value="#{apartamentoController.apartamento.endereco}" maxlength="50" />
+                    </div>
 
-                <p:commandButton id="btnCadastrar" value="Cadastrar" update="@form, frmList" icon="pi pi-save"
-                                 action="#{apartamentoController.adicionarApartamento()}" onclick="dlgCreate.hide()"/>
+                    <div class="field col-12 md:col-4">
+                        <p:outputLabel id="oplMetragem" value="Metragem" for="iptMetragem"/>
+                        <p:inputNumber id="iptMetragem" required="true" 
+                                       requiredMessage="O atributo Metragem é obrigatório"
+                                       value="#{apartamentoController.apartamento.metragem}"
+                                       symbolPosition="s" decimalSeparator="," thousandSeparator="." />
+                    </div>
+
+                    <p:commandButton id="btnCadastrar" value="Cadastrar" update="@form, frmList" icon="pi pi-save"
+                                     action="#{apartamentoController.adicionarApartamento()}" onclick="dlgCreate.hide()"/>
+                </h:panelGrid>
             </h:form>
         </p:dialog>
     </h:body>
