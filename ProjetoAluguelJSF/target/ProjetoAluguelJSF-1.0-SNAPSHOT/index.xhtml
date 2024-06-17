@@ -11,12 +11,18 @@
         <h:form id="frmList">
             <h:panelGroup id="pngList">
                 <p:fieldset toggleable="true">
-                    <p:dataTable id="datalist" value="#{apartamentoController.apartamentoList}" var="item"  
+                    <p:dataTable id="datalist" value="#{apartamentoController.apartamentoList}" var="item" 
+                                 selectionMode="single" selection="#{apartamentoController.selected}"
+                                 widgetVar="datalistApartamentoWidgetVar"
+                                 rowKey="#{item.id}"
                                  paginator="true"
                                  rows="3"
                                  rowsPerPageTemplate="5,10,50,100"
                                  emptyMessage="Nenhum apartamento cadastrado..."
                                  >
+
+                        <p:ajax event="rowSelect" update="btnEdit btnDelete"/>
+                        <p:ajax event="rowUnselect" update="btnEdit btnDelete"/>
 
                         <p:column width="4%" sortBy="#{item.id}" filterBy="#{item.id}">
                             <f:facet name="header">
@@ -63,12 +69,30 @@
                         </p:column>
 
                         <f:facet name="footer">
+                            
                             <!--Botão utilizado para abrir a modal de criação -->
                             <p:commandButton id="btnCreate" value="Incluir Apartamento"  icon="pi pi-file" 
                                              onclick="PF('dlgCreate').show()"/> 
+                            <!--Botão utilizado para abrir o modal de edição-->
+                            <p:commandButton id="btnEdit" icon="pi pi-user-edit" value="Editar Apartamento"
+                                             update="formEdit" oncomplete="PF('dlgEdit').show()"
+                                             disabled="#{empty apartamentoController.selected}"/>
+                            <!-- Botão utilizado para excluir registro selecionado -->
+                            <p:commandButton id="btnDelete" icon="pi pi-trash" value="Excluir Apartamento"
+                                             actionListener="#{apartamentoController.deletarApartamento()}" update="frmList"
+                                             disabled="#{empty apartamentoController.selected}">
+                                <p:confirm header="Confirmar Exclusão" message="Você confirma exclusão do registro?"
+                                           icon="ui-icon-alert" />
+                            </p:commandButton>
+                            
                         </f:facet>
                     </p:dataTable>
                 </p:fieldset>
+                
+                <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                    <p:commandButton value="sim" type="button" styleClass="ui-confirmdialog-yes" icon="fa fa-check"/>
+                    <p:commandButton value="Não" type="button" styleClass="ui-confirmdialog-no" icon="fa fa-times"/>
+                </p:confirmDialog>
             </h:panelGroup>
         </h:form>
 
@@ -115,6 +139,45 @@
 
                     <p:commandButton id="btnCadastrar" value="Cadastrar" update="@form, frmList" icon="pi pi-save"
                                      action="#{apartamentoController.adicionarApartamento()}" onclick="dlgCreate.hide()"/>
+                </h:panelGrid>
+            </h:form>
+        </p:dialog>
+
+        <p:dialog header="Editar Apartamento" widgetVar="dlgEdit" height="400" width="600" showEffect="fade" modal="true">
+            <h:form id="formEdit">
+                <p:growl id="growl" showDetail="true" />
+                <h:panelGrid id="pngEdicao" columns="2">
+
+                        <p:outputLabel id="oplApartamento" value="Apartamento:" for="iptApartamento"/>
+                        <p:inputText id="iptApartamento" label="Apartamento" required="true" 
+                                     requiredMessage="O atributo apartamento é obrigatório"
+                                     value="#{apartamentoController.selected.apartamento}" maxlength="7" />
+
+                        <p:outputLabel id="oplAluguel" value="Aluguel" for="iptAluguel"/>
+                        <p:inputNumber id="iptAluguel" required="true" 
+                                       requiredMessage="O atributo Aluguel é obrigatório"
+                                       value="#{apartamentoController.selected.aluguel}"
+                                       symbolPosition="s" decimalSeparator="," thousandSeparator="." />
+
+                    <p:outputLabel id="oplCondominio" value="Condominio:" for="iptCondominio"/>
+                    <p:inputNumber id="iptCondominio" label="Condominio" required="true" 
+                                   requiredMessage="O atributo condominio é obrigatório"
+                                   value="#{apartamentoController.selected.condominio}" decimalPlaces="2" >
+                    </p:inputNumber>
+                        <p:outputLabel id="oplEndereco" value="Endereco:" for="iptEndereco"/>
+                        <p:inputText id="iptEndereco" label="Endereco" required="true" 
+                                     requiredMessage="O atributo endereco é obrigatório"
+                                     value="#{apartamentoController.selected.endereco}" maxlength="50" />
+
+                        <p:outputLabel id="oplMetragem" value="Metragem" for="iptMetragem"/>
+                        <p:inputNumber id="iptMetragem" required="true" 
+                                       requiredMessage="O atributo Metragem é obrigatório"
+                                       value="#{apartamentoController.selected.metragem}"
+                                       symbolPosition="s" decimalSeparator="," thousandSeparator="." />
+
+                    <p:commandButton id="btnSalvarEdicao" value="Salvar" update="@form, frmList" 
+                                     onclick="dlgEdit.hide()" icon="pi pi-save"
+                                     action="#{apartamentoController.editarApartamento()}" />
                 </h:panelGrid>
             </h:form>
         </p:dialog>

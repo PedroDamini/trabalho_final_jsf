@@ -26,13 +26,23 @@ public class ApartamentoController implements Serializable {
      */
     public ApartamentoController() {
     }
-    
+
     //objeto que representa um apartamento
     ApartamentoEntity apartamento = new ApartamentoEntity();
-    
+
     //objeto que representa uma lista de apartamentos
     private List<ApartamentoEntity> apartamentoList = new ArrayList<>();
-    
+
+    private ApartamentoEntity selected;
+
+    public ApartamentoEntity getSelected() {
+        return selected;
+    }
+
+    public void setSelected(ApartamentoEntity selected) {
+        this.selected = selected;
+    }
+
     public ApartamentoEntity getApartamento() {
         return apartamento;
     }
@@ -48,15 +58,15 @@ public class ApartamentoController implements Serializable {
     public void setApartamentoList(List<ApartamentoEntity> apartamentoList) {
         this.apartamentoList = apartamentoList;
     }
-    
-    private int gerarId(){
+
+    private int gerarId() {
         int id = 1;
         if (apartamentoList.isEmpty()) {
             id = apartamentoList.size() + 1;
         }
         return id;
     }
-    
+
     private void exibirMensagem() {
         //criando mensagem para exibir...
         String msg = "Apartamento adicionado: " + apartamento.getApartamento();
@@ -64,7 +74,7 @@ public class ApartamentoController implements Serializable {
         FacesMessage fm = new FacesMessage(msg);
         FacesContext.getCurrentInstance().addMessage(msg, fm);
     }
-    
+
     public void adicionarApartamento() {
         //adicionando id para o novo registro
         apartamento.setId(gerarId());
@@ -74,31 +84,32 @@ public class ApartamentoController implements Serializable {
         //limpando os dados da apartamento...
         apartamento = new ApartamentoEntity();
     }
-    
-//    public void editarApartamento() {        
-//        ejbFacade.edit(selected);        
-//        //efine o objeto selected como nulo
-//        selected = null;
-//        //exibindo mensagem
-//        FacesMessage fm = new FacesMessage(
-//                FacesMessage.SEVERITY_INFO,
-//                "Sucesso!",
-//                "Registro alterado com sucesso.");
-//        FacesContext.getCurrentInstance().addMessage(null, fm);
-//    }
+
+    public void editarApartamento() {
+        int index = apartamentoList.indexOf(selected);
+        apartamentoList.set(index, selected);
+        selected = null;
+        //exibindo mensagem
+        FacesMessage fm = new FacesMessage(
+                FacesMessage.SEVERITY_INFO,
+                "Sucesso!",
+                "Registro alterado com sucesso.");
+        FacesContext.getCurrentInstance().addMessage(null, fm);
+    }
 
     /**
-     * Método utilizado para deletar uma pessoa da tabela
+     * Método utilizado para deletar um apartamento
      */
-//    public void deletarApartamento() {
-//        int index = apartamentoList.indexOf(selected);
-//        selected = null;
-//        //exibindo mensagem
-//        FacesMessage fm = new FacesMessage(
-//                FacesMessage.SEVERITY_INFO,
-//                "Sucesso!",
-//                "Registro excluído com sucesso.");
-//        FacesContext.getCurrentInstance().addMessage(null, fm);
-//    }
+    public void deletarApartamento() {
+        int index = apartamentoList.indexOf(selected);
+        apartamentoList.remove(index);
+        selected = null;
+        //exibindo mensagem
+        FacesMessage fm = new FacesMessage(
+                FacesMessage.SEVERITY_INFO,
+                "Sucesso!",
+                "Registro excluído com sucesso.");
+        FacesContext.getCurrentInstance().addMessage(null, fm);
+    }
 //    
 }
