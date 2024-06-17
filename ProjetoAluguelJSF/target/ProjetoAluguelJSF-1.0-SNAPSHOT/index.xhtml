@@ -68,7 +68,7 @@
                             <h:outputText value="#{item.metragem}"/>
                         </p:column>
 
-                        <f:facet name="footer">
+                        <f:facet name="footer" >
                             
                             <!--Botão utilizado para abrir a modal de criação -->
                             <p:commandButton id="btnCreate" value="Incluir Apartamento"  icon="pi pi-file" 
@@ -85,7 +85,7 @@
                                            icon="ui-icon-alert" />
                             </p:commandButton>
                                 
-                            <p:commandButton id="btnView" icon="pi pi-user-edit" value="Detalhes do Apartamento"
+                            <p:commandButton style="margin-left: 0.25%" id="btnView" icon="pi pi-user-edit" value="Detalhes do Apartamento"
                                              update="formView" oncomplete="PF('dlgView').show()"
                                              disabled="#{empty apartamentoController.selected}"/>
                             
