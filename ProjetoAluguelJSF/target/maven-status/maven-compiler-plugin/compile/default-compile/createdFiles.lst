@@ -1,4 +1,7 @@
-br\upf\projetoalugueljsf\controller\ApartamentoController.class
+br\upf\projetoalugueljsf\controller\PessoaController.class
+br\upf\projetoalugueljsf\controller\LoginController.class
 br\upf\projetoalugueljsf\JakartaRestConfiguration.class
 br\upf\projetoalugueljsf\entity\ApartamentoEntity.class
 br\upf\projetoalugueljsf\resources\JakartaEE10Resource.class
+br\upf\projetoalugueljsf\controller\ApartamentoController.class
+br\upf\projetoalugueljsf\entity\PessoaEntity.class
