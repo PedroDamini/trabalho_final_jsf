@@ -45,29 +45,29 @@ public class PessoaFacade extends AbstractFacade<PessoaEntity> {
         }
         return entityList;
     }
-//
-//    /**
-//     * Buscar uma pessoa por email
-//     * @param email
-//     * @param senha
-//     * @return 
-//     */
-//    public PessoaEntity buscarPorEmail(String email, String senha) {
-//        PessoaEntity pessoa = new PessoaEntity();
-//        try {
-//            //utilizando JPQL para construir a query 
-//            Query query = getEntityManager()
-//                    .createQuery("SELECT p FROM PessoaEntity p WHERE p.email = :email AND p.senha = :senha");
-//            query.setParameter("email", email);
-//            query.setParameter("senha", senha);
-//
-//            //verifica se existe algum resultado para não gerar excessão
-//            if (!query.getResultList().isEmpty()) {
-//                pessoa = (PessoaEntity) query.getSingleResult();
-//            }
-//        } catch (Exception e) {
-//            System.out.println("Erro: " + e);
-//        }
-//        return pessoa;
-//    }
+
+    /**
+     * Buscar uma pessoa por email
+     * @param email
+     * @param senha
+     * @return 
+     */
+    public PessoaEntity buscarPorEmail(String email, String senha) {
+        PessoaEntity pessoa = new PessoaEntity();
+        try {
+            //utilizando JPQL para construir a query 
+            Query query = getEntityManager()
+                    .createQuery("SELECT p FROM PessoaEntity p WHERE p.email = :email AND p.senha = :senha");
+            query.setParameter("email", email);
+            query.setParameter("senha", senha);
+
+            //verifica se existe algum resultado para não gerar excessão
+            if (!query.getResultList().isEmpty()) {
+                pessoa = (PessoaEntity) query.getSingleResult();
+            }
+        } catch (Exception e) {
+            System.out.println("Erro: " + e);
+        }
+        return pessoa;
+    }
 }

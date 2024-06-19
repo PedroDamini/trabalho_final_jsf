@@ -6,6 +6,7 @@ package br.upf.projetoalugueljsf.controller;
 
 import br.upf.projetoalugueljsf.entity.PessoaEntity;
 import jakarta.annotation.PostConstruct;
+import jakarta.ejb.EJB;
 import jakarta.enterprise.context.SessionScoped;
 import jakarta.faces.application.FacesMessage;
 import jakarta.faces.context.FacesContext;
@@ -19,6 +20,9 @@ import java.io.Serializable;
 @Named(value = "loginController")
 @SessionScoped
 public class LoginController implements Serializable {
+
+    @EJB
+    private br.upf.projetoalugueljsf.facade.PessoaFacade ejbFacade;
 
     public LoginController() {
     }
@@ -36,16 +40,16 @@ public class LoginController implements Serializable {
     public void prepareAutenticarPessoa() {
         pessoa = new PessoaEntity();
     }
-    
+
     @PostConstruct
     public void init() {
         prepareAutenticarPessoa();
     }
-    
+
     public String validarLogin() {
-        if (pessoa.getEmail().equals("user@gmail.com")
-                && pessoa.getSenha().equals("123")) {
-            return "/index.xhtml?faces-redirect=true";
+        PessoaEntity pessoaDB = ejbFacade.buscarPorEmail(pessoa.getEmail(), pessoa.getSenha());
+        if ((pessoaDB.getId() != null)) {
+            return "/pessoa.xhtml?faces-redirect=true";
         } else {
             FacesMessage fm = new FacesMessage(
                     FacesMessage.SEVERITY_ERROR,
@@ -54,6 +58,6 @@ public class LoginController implements Serializable {
             FacesContext.getCurrentInstance().addMessage(null, fm);
             return null;
         }
-    }    
+    }
 
 }
