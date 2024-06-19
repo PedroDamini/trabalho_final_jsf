@@ -83,4 +83,14 @@ public class PessoaController implements Serializable {
         //limpando os dados da pessoa...
         pessoa = new PessoaEntity();
     }
+    
+    public void editarPessoa() {
+        ejbFacade.edit(selected);
+        selected = null;
+        FacesMessage fm = new FacesMessage(
+                FacesMessage.SEVERITY_INFO, 
+                "Sucesso!", 
+                "Registro alterado com sucesso.");
+        FacesContext.getCurrentInstance().addMessage(null, fm);
+    }
 }
