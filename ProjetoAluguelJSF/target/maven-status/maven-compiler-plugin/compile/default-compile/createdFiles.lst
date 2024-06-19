@@ -5,3 +5,5 @@ br\upf\projetoalugueljsf\entity\ApartamentoEntity.class
 br\upf\projetoalugueljsf\resources\JakartaEE10Resource.class
 br\upf\projetoalugueljsf\controller\ApartamentoController.class
 br\upf\projetoalugueljsf\entity\PessoaEntity.class
+br\upf\projetoalugueljsf\facade\PessoaFacade.class
+br\upf\projetoalugueljsf\facade\AbstractFacade.class

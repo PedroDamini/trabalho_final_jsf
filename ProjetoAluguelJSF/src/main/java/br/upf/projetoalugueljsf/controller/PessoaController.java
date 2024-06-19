@@ -1,6 +1,7 @@
 package br.upf.projetoalugueljsf.controller;
 
 import br.upf.projetoalugueljsf.entity.PessoaEntity;
+import jakarta.ejb.EJB;
 import jakarta.inject.Named;
 import jakarta.enterprise.context.SessionScoped;
 import jakarta.faces.application.FacesMessage;
@@ -12,6 +13,9 @@ import java.util.List;
 @Named(value = "pessoaController")
 @SessionScoped
 public class PessoaController implements Serializable {
+    
+    @EJB
+    private br.upf.projetoalugueljsf.facade.PessoaFacade ejbFacade;
 
     public PessoaController() {
     }
@@ -38,7 +42,7 @@ public class PessoaController implements Serializable {
     }
 
     public List<PessoaEntity> getPessoaList() {
-        return pessoaList;
+        return ejbFacade.buscarTodos();
     }
 
     public void setPessoaList(List<PessoaEntity> pessoaList) {
@@ -74,10 +78,7 @@ public class PessoaController implements Serializable {
      * Método responsável por adicionar uma pessoa
      */
     public void adicionarPessoa() {
-        //adicionando id para o novo registro
-        pessoa.setId(gerarId());
-        //adicionando um contato dentro da lista de contatos...
-        pessoaList.add(pessoa);
+        ejbFacade.createReturn(pessoa);
         exibirMensagem();
         //limpando os dados da pessoa...
         pessoa = new PessoaEntity();
