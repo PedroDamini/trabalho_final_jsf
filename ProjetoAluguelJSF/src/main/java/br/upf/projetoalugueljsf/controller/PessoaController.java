@@ -23,7 +23,16 @@ public class PessoaController implements Serializable {
     public PessoaEntity getPessoa() {
         return pessoa;
     }
+    private PessoaEntity selected;
 
+    public PessoaEntity getSelected() {
+        return selected;
+    }
+
+    public void setSelected(PessoaEntity selected) {
+        this.selected = selected;
+    }
+    
     public void setPessoa(PessoaEntity pessoa) {
         this.pessoa = pessoa;
     }
