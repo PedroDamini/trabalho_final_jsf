@@ -6,6 +6,8 @@ package br.upf.projetoalugueljsf.controller;
 
 import br.upf.projetoalugueljsf.entity.ApartamentoEntity;
 import br.upf.projetoalugueljsf.entity.InquilinoEntity;
+import jakarta.ejb.EJB;
+import jakarta.ejb.EJBException;
 import jakarta.inject.Named;
 import jakarta.enterprise.context.SessionScoped;
 import jakarta.faces.application.FacesMessage;
@@ -14,7 +16,9 @@ import jakarta.faces.context.FacesContext;
 import jakarta.faces.convert.Converter;
 import jakarta.faces.convert.FacesConverter;
 import java.io.Serializable;
+import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -31,6 +35,8 @@ public class ApartamentoController implements Serializable {
     public ApartamentoController() {
     }
 
+    @EJB
+    private br.upf.projetoalugueljsf.facade.ApartamentoFacade ejbFacade;
     //objeto que representa um apartamento
     ApartamentoEntity apartamento = new ApartamentoEntity();
 
@@ -56,7 +62,7 @@ public class ApartamentoController implements Serializable {
     }
 
     public List<ApartamentoEntity> getApartamentoList() {
-        return apartamentoList;
+        return ejbFacade.buscarTodos();
     }
 
     public void setApartamentoList(List<ApartamentoEntity> apartamentoList) {
@@ -71,7 +77,65 @@ public class ApartamentoController implements Serializable {
         return id;
     }
 
-    private void exibirMensagem() {
+
+    public ApartamentoEntity prepareAdicionar() {
+        apartamento = new ApartamentoEntity();
+        return apartamento;
+    }
+
+    public static void addErrorMessage(String msg) {
+        FacesMessage facesMsg = new FacesMessage(FacesMessage.SEVERITY_ERROR, msg, msg);
+        FacesContext.getCurrentInstance().addMessage(null, facesMsg);
+    }
+
+    public static void addSuccessMessage(String msg) {
+        FacesMessage facesMsg = new FacesMessage(FacesMessage.SEVERITY_INFO, msg, msg);
+        FacesContext.getCurrentInstance().addMessage("successInfo", facesMsg);
+    }
+
+    public static enum PersistAction {
+        CREATE,
+        DELETE,
+        UPDATE
+    }
+
+    private void persist(PersistAction persistAction, String successMessage) {
+        try {
+            if (null != persistAction) {
+                switch (persistAction) {
+                    case CREATE:
+                        ejbFacade.createReturn(apartamento);
+                        break;
+                    case UPDATE:
+                        ejbFacade.edit(selected);
+                        selected = null;
+                        break;
+                    case DELETE:
+                        ejbFacade.remove(selected);
+                        selected = null;
+                        break;
+                    default:
+                        break;
+                }
+            }
+            addSuccessMessage(successMessage);
+        } catch (EJBException ex) {
+            String msg = "";
+            Throwable cause = ex.getCause();
+            if (cause != null) {
+                msg = cause.getLocalizedMessage();
+            }
+            if (msg.length() > 0) {
+                addErrorMessage(msg);
+            } else {
+                addErrorMessage(ex.getLocalizedMessage());
+            }
+        } catch (Exception ex) {
+            addErrorMessage(ex.getLocalizedMessage());
+        }
+    }
+
+     private void exibirMensagem() {
         //criando mensagem para exibir...
         String msg = "Apartamento adicionado: " + apartamento.getApartamento();
         //capturando mensagem criada...
@@ -80,82 +144,19 @@ public class ApartamentoController implements Serializable {
     }
 
     public void adicionarApartamento() {
-        //adicionando id para o novo registro
-        apartamento.setId(gerarId());
-        //adicionando um contato dentro da lista de contatos...
-        apartamentoList.add(apartamento);
-        exibirMensagem();
-        //limpando os dados da apartamento...
-        apartamento = new ApartamentoEntity();
+        persist(ApartamentoController.PersistAction.CREATE, 
+                "Registro incluído com sucesso!");
     }
 
     public void editarApartamento() {
-        int index = apartamentoList.indexOf(selected);
-        apartamentoList.set(index, selected);
-        selected = null;
-        //exibindo mensagem
-        FacesMessage fm = new FacesMessage(
-                FacesMessage.SEVERITY_INFO,
-                "Sucesso!",
-                "Registro alterado com sucesso.");
-        FacesContext.getCurrentInstance().addMessage(null, fm);
+        persist(ApartamentoController.PersistAction.UPDATE, 
+                "Registro alterado com sucesso!");
     }
 
-    /**
-     * Método utilizado para deletar um apartamento
-     */
     public void deletarApartamento() {
-        int index = apartamentoList.indexOf(selected);
-        apartamentoList.remove(index);
-        selected = null;
-        //exibindo mensagem
-        FacesMessage fm = new FacesMessage(
-                FacesMessage.SEVERITY_INFO,
-                "Sucesso!",
-                "Registro excluído com sucesso.");
-        FacesContext.getCurrentInstance().addMessage(null, fm);
+        persist(ApartamentoController.PersistAction.DELETE, 
+                "Registro excluído com sucesso!");
     }
 
-    @FacesConverter(forClass = InquilinoEntity.class)
-    public static class InquilinoControllerConverter implements Converter {
-
-        @Override
-        public Object getAsObject(FacesContext facesContext, UIComponent component, String value) {
-            if (value == null || value.length() == 0) {
-                return null;
-            }
-            InquilinoController controller
-                    = (InquilinoController) facesContext.getApplication().getELResolver().
-                            getValue(facesContext.getELContext(),
-                                    null, "inquilinoController");
-            return controller.getInquilino(getKey(value));
-        }
-
-        java.lang.Integer getKey(String value) {
-            java.lang.Integer key;
-            key = Integer.valueOf(value);
-            return key;
-        }
-
-        String getStringKey(java.lang.Integer value) {
-            StringBuilder sb = new StringBuilder();
-            sb.append(value);
-            return sb.toString();
-        }
-
-        @Override
-        public String getAsString(FacesContext facesContext,
-                UIComponent component, Object object) {
-            if (object == null) {
-                return null;
-            }
-            if (object instanceof InquilinoEntity) {
-                InquilinoEntity o = (InquilinoEntity) object;
-                return getStringKey(o.getId());
-            } else {
-                return null;
-            }
-        }
-    }
 //    
 }

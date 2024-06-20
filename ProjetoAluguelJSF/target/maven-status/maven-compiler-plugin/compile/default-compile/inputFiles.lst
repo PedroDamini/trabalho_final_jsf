@@ -1,9 +1,13 @@
 C:\Users\Pedro Damini\Desktop\faculdade\topicos de desenvolvimento de software lll\Trabalho_final\trabalho_final_jsf\ProjetoAluguelJSF\src\main\java\br\upf\projetoalugueljsf\facade\PessoaFacade.java
-C:\Users\Pedro Damini\Desktop\faculdade\topicos de desenvolvimento de software lll\Trabalho_final\trabalho_final_jsf\ProjetoAluguelJSF\src\main\java\br\upf\projetoalugueljsf\controller\PessoaController.java
 C:\Users\Pedro Damini\Desktop\faculdade\topicos de desenvolvimento de software lll\Trabalho_final\trabalho_final_jsf\ProjetoAluguelJSF\src\main\java\br\upf\projetoalugueljsf\resources\JakartaEE10Resource.java
-C:\Users\Pedro Damini\Desktop\faculdade\topicos de desenvolvimento de software lll\Trabalho_final\trabalho_final_jsf\ProjetoAluguelJSF\src\main\java\br\upf\projetoalugueljsf\entity\ApartamentoEntity.java
 C:\Users\Pedro Damini\Desktop\faculdade\topicos de desenvolvimento de software lll\Trabalho_final\trabalho_final_jsf\ProjetoAluguelJSF\src\main\java\br\upf\projetoalugueljsf\facade\AbstractFacade.java
 C:\Users\Pedro Damini\Desktop\faculdade\topicos de desenvolvimento de software lll\Trabalho_final\trabalho_final_jsf\ProjetoAluguelJSF\src\main\java\br\upf\projetoalugueljsf\controller\LoginController.java
-C:\Users\Pedro Damini\Desktop\faculdade\topicos de desenvolvimento de software lll\Trabalho_final\trabalho_final_jsf\ProjetoAluguelJSF\src\main\java\br\upf\projetoalugueljsf\controller\ApartamentoController.java
-C:\Users\Pedro Damini\Desktop\faculdade\topicos de desenvolvimento de software lll\Trabalho_final\trabalho_final_jsf\ProjetoAluguelJSF\src\main\java\br\upf\projetoalugueljsf\entity\PessoaEntity.java
 C:\Users\Pedro Damini\Desktop\faculdade\topicos de desenvolvimento de software lll\Trabalho_final\trabalho_final_jsf\ProjetoAluguelJSF\src\main\java\br\upf\projetoalugueljsf\JakartaRestConfiguration.java
+C:\Users\Pedro Damini\Desktop\faculdade\topicos de desenvolvimento de software lll\Trabalho_final\trabalho_final_jsf\ProjetoAluguelJSF\src\main\java\br\upf\projetoalugueljsf\controller\PessoaController.java
+C:\Users\Pedro Damini\Desktop\faculdade\topicos de desenvolvimento de software lll\Trabalho_final\trabalho_final_jsf\ProjetoAluguelJSF\src\main\java\br\upf\projetoalugueljsf\entity\ApartamentoEntity.java
+C:\Users\Pedro Damini\Desktop\faculdade\topicos de desenvolvimento de software lll\Trabalho_final\trabalho_final_jsf\ProjetoAluguelJSF\src\main\java\br\upf\projetoalugueljsf\controller\ApartamentoController.java
+C:\Users\Pedro Damini\Desktop\faculdade\topicos de desenvolvimento de software lll\Trabalho_final\trabalho_final_jsf\ProjetoAluguelJSF\src\main\java\br\upf\projetoalugueljsf\controller\InquilinoController.java
+C:\Users\Pedro Damini\Desktop\faculdade\topicos de desenvolvimento de software lll\Trabalho_final\trabalho_final_jsf\ProjetoAluguelJSF\src\main\java\br\upf\projetoalugueljsf\entity\PessoaEntity.java
+C:\Users\Pedro Damini\Desktop\faculdade\topicos de desenvolvimento de software lll\Trabalho_final\trabalho_final_jsf\ProjetoAluguelJSF\src\main\java\br\upf\projetoalugueljsf\facade\ApartamentoFacade.java
+C:\Users\Pedro Damini\Desktop\faculdade\topicos de desenvolvimento de software lll\Trabalho_final\trabalho_final_jsf\ProjetoAluguelJSF\src\main\java\br\upf\projetoalugueljsf\facade\InquilinoFacade.java
+C:\Users\Pedro Damini\Desktop\faculdade\topicos de desenvolvimento de software lll\Trabalho_final\trabalho_final_jsf\ProjetoAluguelJSF\src\main\java\br\upf\projetoalugueljsf\entity\InquilinoEntity.java
