@@ -30,3 +30,12 @@ CREATE TABLE inquilino (
     constraint pk_tbl_inquilino primary key (id)
 );
 
+
+
+
+insert into pessoa(nome, datanascimento, datahorareg, idade, email, senha, observacao)
+values ('Pedro', '01-01-2002', current_date, 22, 'user@gmail.com', '123', 'obs');
+
+
+insert into apartamento(apartamento, aluguel, condominio, endereco, metragem)
+values('101A', 1080.50, 205.25, 'Rua Tal', 93);

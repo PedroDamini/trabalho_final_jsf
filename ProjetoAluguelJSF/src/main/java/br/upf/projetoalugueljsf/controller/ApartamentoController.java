@@ -5,10 +5,14 @@
 package br.upf.projetoalugueljsf.controller;
 
 import br.upf.projetoalugueljsf.entity.ApartamentoEntity;
+import br.upf.projetoalugueljsf.entity.InquilinoEntity;
 import jakarta.inject.Named;
 import jakarta.enterprise.context.SessionScoped;
 import jakarta.faces.application.FacesMessage;
+import jakarta.faces.component.UIComponent;
 import jakarta.faces.context.FacesContext;
+import jakarta.faces.convert.Converter;
+import jakarta.faces.convert.FacesConverter;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -110,6 +114,48 @@ public class ApartamentoController implements Serializable {
                 "Sucesso!",
                 "Registro excluído com sucesso.");
         FacesContext.getCurrentInstance().addMessage(null, fm);
+    }
+
+    @FacesConverter(forClass = InquilinoEntity.class)
+    public static class InquilinoControllerConverter implements Converter {
+
+        @Override
+        public Object getAsObject(FacesContext facesContext, UIComponent component, String value) {
+            if (value == null || value.length() == 0) {
+                return null;
+            }
+            InquilinoController controller
+                    = (InquilinoController) facesContext.getApplication().getELResolver().
+                            getValue(facesContext.getELContext(),
+                                    null, "inquilinoController");
+            return controller.getInquilino(getKey(value));
+        }
+
+        java.lang.Integer getKey(String value) {
+            java.lang.Integer key;
+            key = Integer.valueOf(value);
+            return key;
+        }
+
+        String getStringKey(java.lang.Integer value) {
+            StringBuilder sb = new StringBuilder();
+            sb.append(value);
+            return sb.toString();
+        }
+
+        @Override
+        public String getAsString(FacesContext facesContext,
+                UIComponent component, Object object) {
+            if (object == null) {
+                return null;
+            }
+            if (object instanceof InquilinoEntity) {
+                InquilinoEntity o = (InquilinoEntity) object;
+                return getStringKey(o.getId());
+            } else {
+                return null;
+            }
+        }
     }
 //    
 }
