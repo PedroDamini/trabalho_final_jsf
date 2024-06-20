@@ -34,78 +34,77 @@
                             </f:facet>
                             <h:outputText value="#{item.id}"/>
                         </p:column>
-<!--
-                        <p:column width="6%" sortBy="#{item.datahorareg}" filterBy="#{item.datahorareg}">
-                            <f:facet name="header">
-                                <h:outputText value="Registro"/>
-                            </f:facet>
-                            <h:outputText value="#{item.datahorareg}">
-                                <f:convertDateTime pattern="dd/MM/yyyy HH:mm" timeZone="America/Sao_Paulo" />
-                            </h:outputText>
-                        </p:column>-->
 
-                        <p:column width="10%" sortBy="#{item.nome}" filterBy="#{item.nome}">
-                            <f:facet name="header">
-                                <h:outputText value="Nome"/>
-                            </f:facet>
-                            <h:outputText value="#{item.nome}"/>
-                        </p:column>
+                            <p:column width="6%" sortBy="#{item.datahorareg}" filterBy="#{item.datahorareg}">
+                                <f:facet name="header">
+                                    <h:outputText value="Registro"/>
+                                </f:facet>
+                                <h:outputText value="#{item.datahorareg}">
+                                    <f:convertDateTime pattern="dd/MM/yyyy HH:mm" timeZone="America/Sao_Paulo" />
+                                </h:outputText>
+                            </p:column>
 
-                        <p:column width="6%" sortBy="#{item.dataNascimento}" filterBy="#{item.dataNascimento}">
-                            <f:facet name="header">
-                                <h:outputText value="Nascimento"/>
-                            </f:facet>
-                            <h:outputText value="#{item.dataNascimento}">
-                                <f:convertDateTime pattern="dd/MM/yyyy"  />
-                            </h:outputText>
-                        </p:column>
+                            <p:column width="10%" sortBy="#{item.nome}" filterBy="#{item.nome}">
+                                <f:facet name="header">
+                                    <h:outputText value="Nome"/>
+                                </f:facet>
+                                <h:outputText value="#{item.nome}"/>
+                            </p:column>
 
-                        <p:column width="8%" sortBy="#{item.email}" filterBy="#{item.email}">
-                            <f:facet name="header">
-                                <h:outputText value="Email"/>
-                            </f:facet>
-                            <h:outputText value="#{item.email}"/>
-                        </p:column>
+                            <p:column width="6%" sortBy="#{item.dataNascimento}" filterBy="#{item.dataNascimento}">
+                                <f:facet name="header">
+                                    <h:outputText value="Nascimento"/>
+                                </f:facet>
+                                <h:outputText value="#{item.dataNascimento}">
+                                    <f:convertDateTime pattern="dd/MM/yyyy"  />
+                                </h:outputText>
+                            </p:column>
 
-                        <p:column width="4%" sortBy="#{item.idade}" filterBy="#{item.idade}">
-                            <f:facet name="header">
-                                <h:outputText value="Idade"/>
-                            </f:facet>
-                            <h:outputText value="#{item.idade}"/>
-                        </p:column>
+                            <p:column width="8%" sortBy="#{item.email}" filterBy="#{item.email}">
+                                <f:facet name="header">
+                                    <h:outputText value="Email"/>
+                                </f:facet>
+                                <h:outputText value="#{item.email}"/>
+                            </p:column>
 
-                        <p:column width="8%" sortBy="#{item.observacao}" filterBy="#{item.observacao}">
-                            <f:facet name="header">
-                                <h:outputText value="Observacao"/>
-                            </f:facet>
-                            <h:outputText value="#{item.observacao}"/>
-                        </p:column>
+                            <p:column width="4%" sortBy="#{item.idade}" filterBy="#{item.idade}">
+                                <f:facet name="header">
+                                    <h:outputText value="Idade"/>
+                                </f:facet>
+                                <h:outputText value="#{item.idade}"/>
+                            </p:column>
 
-                        <f:facet name="footer">
-                            <!--Botão utilizado para abrir a modal de criação -->
-                            <p:commandButton id="btnCreate" value="Incluir Pessoa"  icon="pi pi-file" 
-                                             actionListener="#{pessoaController.prepareAdicionar()}"
-                                             update=":CreateForm"
-                                             onclick="PF('dlgCreate').show()"/>  
+                            <p:column width="8%" sortBy="#{item.observacao}" filterBy="#{item.observacao}">
+                                <f:facet name="header">
+                                    <h:outputText value="Observacao"/>
+                                </f:facet>
+                                <h:outputText value="#{item.observacao}"/>
+                            </p:column>
 
-                            <!--Botão utilizado para abrir a modal de edição -->
-                            <p:commandButton id="btnEdit" icon="pi pi-user-edit"  value="Editar Pessoa" 
-                                             update="formEdit" oncomplete="PF('dlgEdit').show()" 
-                                             disabled="#{empty pessoaController.selected}"/>
+                            <f:facet name="footer">
+                                <!--Botão utilizado para abrir a modal de criação -->
+                                <p:commandButton id="btnCreate" value="Incluir Pessoa"  icon="pi pi-file" 
+                                                 actionListener="#{pessoaController.prepareAdicionar()}"
+                                                 update=":CreateForm"
+                                                 onclick="PF('dlgCreate').show()"/>  
 
-                            <!--Botão utilizado para excluir o registro selecionado-->                            
-                            <p:commandButton id="btnDelete" icon="pi pi-trash"  value="Excluir Pessoa" 
-                                             actionListener="#{pessoaController.deletarPessoa()}" update="frmList" 
-                                             disabled="#{empty pessoaController.selected}">
-                                <p:confirm header="Confirmar Exclusão" message="Você confirma exclusão do registro?" 
-                                           icon="ui-icon-alert"  />
-                            </p:commandButton>
+                                <!--Botão utilizado para abrir a modal de edição -->
+                                <p:commandButton id="btnEdit" icon="pi pi-user-edit"  value="Editar Pessoa" 
+                                                 update="formEdit" oncomplete="PF('dlgEdit').show()" 
+                                                 disabled="#{empty pessoaController.selected}"/>
 
-                            <!--Botão utilizado para abrir a modal de visualização -->
-                            <p:commandButton id="btnView" icon="pi pi-user-edit"  value="Detalhes da Pessoa" 
-                                             update="formView" oncomplete="PF('dlgView').show()" 
-                                             disabled="#{empty pessoaController.selected}"/>
+                                <!--Botão utilizado para excluir o registro selecionado-->                            
+                                <p:commandButton id="btnDelete" icon="pi pi-trash"  value="Excluir Pessoa" 
+                                                 actionListener="#{pessoaController.deletarPessoa()}" update="frmList" 
+                                                 disabled="#{empty pessoaController.selected}">
+                                    <p:confirm header="Confirmar Exclusão" message="Você confirma exclusão do registro?" 
+                                               icon="ui-icon-alert"  />
+                                </p:commandButton>
 
+                                <!--Botão utilizado para abrir a modal de visualização -->
+                                <p:commandButton id="btnView" icon="pi pi-user-edit"  value="Detalhes da Pessoa" 
+                                                 update="formView" oncomplete="PF('dlgView').show()" 
+                                                 disabled="#{empty pessoaController.selected}"/>
                         </f:facet>
                     </p:dataTable>
                 </p:fieldset>
@@ -139,7 +138,7 @@
                                  value="#{pessoaController.pessoa.email}" maxlength="50" >
                         <f:validateRegex pattern="[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})"  />
                     </p:inputText>
-                    
+
                     <p:outputLabel id="oplSenha" value="Senha:" for="iptSenha"/>
                     <p:inputText id="iptSenha" size="40" label="Senha" required="true" 
                                  requiredMessage="O atributo senha é obrigatório"
@@ -153,12 +152,12 @@
                                      value="#{pessoaController.pessoa.observacao}"/>
 
                 </h:panelGrid>   
-                
+
                 <p:commandButton actionListener="#{pessoaController.adicionarPessoa()}" 
                                  icon="pi pi-save" value="Cadastrar" 
                                  update=":frmList, CreateForm" 
-                                onclick="dlgCreate.hide()"/>
-                    
+                                 onclick="dlgCreate.hide()"/>
+
             </h:form>
         </p:dialog>
 
@@ -169,6 +168,11 @@
                     <p:outputLabel id="oplId" value="ID:" for="iptId"/>
                     <p:inputText id="iptId" size="10" label="ID" disabled="true"
                                  value="#{pessoaController.selected.id}"  />
+
+                    <p:outputLabel id="oplDatahorareg" for="ipmDatahorareg" value="Registro"  />
+                    <p:inputText id="ipmDatahorareg" value="#{pessoaController.selected.datahorareg}"  disabled="true">
+                        <f:convertDateTime pattern="dd/MM/yy HH:mm" timeZone="America/Sao_Paulo" />
+                    </p:inputText>
 
                     <p:outputLabel id="oplNome" value="Nome:" for="iptNome"/>
                     <p:inputText id="iptNome" size="40" label="Nome" required="true" 
@@ -213,11 +217,11 @@
                 <h:panelGrid id="pngView" columns="2" rendered="#{pessoaController.selected != null}">    
                     <p:outputLabel value="ID:" />
                     <p:outputLabel value="#{pessoaController.selected.id}"  />
-<!--
-                    <p:outputLabel value="Registro"  />
-                    <p:outputLabel value="#{pessoaController.selected.datahorareg}"  >
-                        <f:convertDateTime pattern="dd/MM/yy HH:mm"  />
-                    </p:outputLabel>-->
+                    <!--
+                                        <p:outputLabel value="Registro"  />
+                                        <p:outputLabel value="#{pessoaController.selected.datahorareg}"  >
+                                            <f:convertDateTime pattern="dd/MM/yy HH:mm"  />
+                                        </p:outputLabel>-->
 
                     <p:outputLabel value="Nome: " />
                     <p:outputLabel value="#{pessoaController.selected.nome}" />

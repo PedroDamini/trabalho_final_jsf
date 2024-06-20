@@ -48,7 +48,7 @@ public class LoginController implements Serializable {
 
     public String validarLogin() {
         PessoaEntity pessoaDB = ejbFacade.buscarPorEmail(pessoa.getEmail(), pessoa.getSenha());
-        if ((pessoaDB.getId() != null)) {
+        if ((pessoaDB != null && pessoaDB.getId() != null)) {
             return "/pessoa.xhtml?faces-redirect=true";
         } else {
             FacesMessage fm = new FacesMessage(

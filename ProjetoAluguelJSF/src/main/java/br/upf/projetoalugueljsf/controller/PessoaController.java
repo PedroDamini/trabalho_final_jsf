@@ -136,6 +136,8 @@ public class PessoaController implements Serializable {
     }
 
     public void adicionarPessoa() {
+        Date datahoraAtual = new Timestamp(System.currentTimeMillis());
+        pessoa.setDatahorareg(datahoraAtual);
         persist(PessoaController.PersistAction.CREATE, 
                 "Registro incluído com sucesso!");
     }

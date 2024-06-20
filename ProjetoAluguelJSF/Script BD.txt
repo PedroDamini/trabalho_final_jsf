@@ -1,0 +1,32 @@
+CREATE TABLE pessoa(
+	id serial NOT NULL,
+	nome text NOT NULL,
+	datanascimento date NOT NULL,
+	datahorareg Timestamp with time zone NOT NULL,
+	idade integer NOT NULL,
+	email text NOT NULL,
+	senha text NOT NULL,
+	observacao text,
+constraint pk_tbl_pessoa primary key (id)
+);
+
+CREATE TABLE apartamento
+(
+id serial NOT NULL,
+apartamento text NOT NULL,
+aluguel float NOT NULL,
+condominio float NOT NULL,
+endereco text not null,
+metragem float NOT NULL,
+constraint pk_tbl_apartamento primary key (id)
+);
+
+CREATE TABLE inquilino (
+    id serial NOT NULL,
+    nome text NOT NULL,
+    cpf text NOT NULL,
+    datanascimento date NOT NULL,
+    mesinquilino int NOT NULL,
+    constraint pk_tbl_inquilino primary key (id)
+);
+

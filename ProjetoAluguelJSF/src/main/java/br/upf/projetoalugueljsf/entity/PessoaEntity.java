@@ -53,6 +53,12 @@ public class PessoaEntity implements Serializable {
 
     @Column(name = "observacao")
     private String observacao;
+    
+    @Basic(optional = false)
+    @NotNull
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "datahorareg")
+    private Date datahorareg;
 
     @Override
     public int hashCode() {
@@ -81,11 +87,11 @@ public class PessoaEntity implements Serializable {
     @Column(name = "senha")
     private String senha;
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -135,6 +141,14 @@ public class PessoaEntity implements Serializable {
 
     public void setSenha(String senha) {
         this.senha = senha;
+    }
+
+    public Date getDatahorareg() {
+        return datahorareg;
+    }
+
+    public void setDatahorareg(Date datahorareg) {
+        this.datahorareg = datahorareg;
     }
 
 }
