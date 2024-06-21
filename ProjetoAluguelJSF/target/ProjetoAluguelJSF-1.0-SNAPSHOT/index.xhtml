@@ -75,6 +75,8 @@
 
                             <!--Botão utilizado para abrir a modal de criação -->
                             <p:commandButton id="btnCreate" value="Incluir Apartamento"  icon="pi pi-file" 
+                                             actionListener="#{apartamentoController.prepareAdicionar()}"
+                                             update=":CreateForm"
                                              onclick="PF('dlgCreate').show()"/> 
                             <!--Botão utilizado para abrir o modal de edição-->
                             <p:commandButton id="btnEdit" icon="pi pi-user-edit" value="Editar Apartamento"
@@ -112,35 +114,35 @@
                         <p:outputLabel id="oplApartamento" value="Apartamento:" for="iptApartamento"/>
                         <p:inputText id="iptApartamento" label="Apartamento" required="true" 
                                      requiredMessage="O atributo apartamento é obrigatório"
-                                     value="#{apartamentoController.apartamento.apartamento}" maxlength="7" />
+                                     value="#{apartamentoController.selected.apartamento}" maxlength="7" />
                     </div>
 
                     <div class="field col-12 md:col-4">
                         <p:outputLabel id="oplAluguel" value="Aluguel" for="iptAluguel"/>
                         <p:inputNumber id="iptAluguel" required="true" 
                                        requiredMessage="O atributo Aluguel é obrigatório"
-                                       value="#{apartamentoController.apartamento.aluguel}"
+                                       value="#{apartamentoController.selected.aluguel}"
                                        symbolPosition="s" decimalSeparator="," thousandSeparator="." />
                     </div>
 
                     <p:outputLabel id="oplCondominio" value="Condominio:" for="iptCondominio"/>
                     <p:inputNumber id="iptCondominio" label="Condominio" required="true" 
                                    requiredMessage="O atributo condominio é obrigatório"
-                                   value="#{apartamentoController.apartamento.condominio}" decimalPlaces="2" >
+                                   value="#{apartamentoController.selected.condominio}" decimalPlaces="2" >
                     </p:inputNumber>
 
                     <div class="field col-12 md:col-4">
                         <p:outputLabel id="oplEndereco" value="Endereco:" for="iptEndereco"/>
                         <p:inputText id="iptEndereco" label="Endereco" required="true" 
                                      requiredMessage="O atributo endereco é obrigatório"
-                                     value="#{apartamentoController.apartamento.endereco}" maxlength="50" />
+                                     value="#{apartamentoController.selected.endereco}" maxlength="50" />
                     </div>
 
                     <div class="field col-12 md:col-4">
                         <p:outputLabel id="oplMetragem" value="Metragem" for="iptMetragem"/>
                         <p:inputNumber id="iptMetragem" required="true" 
                                        requiredMessage="O atributo Metragem é obrigatório"
-                                       value="#{apartamentoController.apartamento.metragem}"
+                                       value="#{apartamentoController.selected.metragem}"
                                        symbolPosition="s" decimalSeparator="," thousandSeparator="." />
                     </div>
 

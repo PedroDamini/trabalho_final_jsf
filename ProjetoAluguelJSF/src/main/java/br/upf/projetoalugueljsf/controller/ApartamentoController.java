@@ -79,8 +79,8 @@ public class ApartamentoController implements Serializable {
     }
 
     public ApartamentoEntity prepareAdicionar() {
-        apartamento = new ApartamentoEntity();
-        return apartamento;
+        selected = new ApartamentoEntity();
+        return selected;
     }
 
     public static void addErrorMessage(String msg) {
@@ -104,7 +104,7 @@ public class ApartamentoController implements Serializable {
             if (null != persistAction) {
                 switch (persistAction) {
                     case CREATE:
-                        ejbFacade.createReturn(apartamento);
+                        ejbFacade.createReturn(selected);
                         break;
                     case UPDATE:
                         ejbFacade.edit(selected);

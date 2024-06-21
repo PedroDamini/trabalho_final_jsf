@@ -79,8 +79,8 @@ public class InquilinoController implements Serializable {
     }
 
     public InquilinoEntity prepareAdicionar() {
-        inquilino = new InquilinoEntity();
-        return inquilino;
+        selected = new InquilinoEntity();
+        return selected;
     }
 
     public static void addErrorMessage(String msg) {
@@ -104,7 +104,7 @@ public class InquilinoController implements Serializable {
             if (null != persistAction) {
                 switch (persistAction) {
                     case CREATE:
-                        ejbFacade.createReturn(inquilino);
+                        ejbFacade.createReturn(selected);
                         break;
                     case UPDATE:
                         ejbFacade.edit(selected);
