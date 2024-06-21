@@ -31,7 +31,7 @@ CREATE TABLE inquilino (
 );
 
 
-
+ALTER TABLE inquilino ADD CONSTRAINT Relationship01 FOREIGN KEY (id_apartamento) REFERENCES apartamento (id) on update restrict on delete restrict;
 
 insert into pessoa(nome, datanascimento, datahorareg, idade, email, senha, observacao)
 values ('Pedro', '01-01-2002', current_date, 22, 'user@gmail.com', '123', 'obs');

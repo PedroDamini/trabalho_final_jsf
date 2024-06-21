@@ -11,6 +11,7 @@ br\upf\projetoalugueljsf\JakartaRestConfiguration.class
 br\upf\projetoalugueljsf\entity\ApartamentoEntity.class
 br\upf\projetoalugueljsf\resources\JakartaEE10Resource.class
 br\upf\projetoalugueljsf\controller\ApartamentoController.class
+br\upf\projetoalugueljsf\controller\InquilinoController$InquilinoControllerConverter.class
 br\upf\projetoalugueljsf\facade\PessoaFacade.class
 br\upf\projetoalugueljsf\controller\ApartamentoController$PersistAction.class
 br\upf\projetoalugueljsf\controller\InquilinoController.class

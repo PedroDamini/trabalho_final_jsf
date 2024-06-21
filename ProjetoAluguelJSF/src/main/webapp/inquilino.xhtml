@@ -136,20 +136,20 @@
 
                     <p:outputLabel value="Apartamento: " for="idApartamento" />
                     <p:selectOneMenu id="idApartamento" value="#{inquilinoController.selected.idApartamento}" 
-                                     required="false" requiredMessage="O atributo apartamento é obrigatório!"
+                                     required="true" requiredMessage="O atributo apartamento é obrigatório!"
                                      panelStyle="width:180px" filter="true" filterMatchMode="contains">
                         <f:selectItem itemLabel="Selecione um apartamento..."/>                        
                         <f:selectItems value="#{apartamentoController.apartamentoAll()}"
                                        var="idApartamentoItem"
                                        itemValue="#{idApartamentoItem}"
-                                       itemLabel="#{idApartamentoItem.apartamento}"/>
+                                       itemLabel="#{idApartamentoItem}"/>
                     </p:selectOneMenu>
 
                 </h:panelGrid>   
 
                 <p:commandButton actionListener="#{inquilinoController.adicionarInquilino()}" 
                                  icon="pi pi-save" value="Cadastrar" 
-                                 update=":frmList, CreateForm" 
+                                 update=":frmList" 
                                  onclick="dlgCreate.hide()"/>
 
             </h:form>
@@ -222,9 +222,6 @@
 
                     <p:outputLabel value="Apartamento:"/>
                     <p:outputLabel value="#{inquilinoController.selected.idApartamento.apartamento}" />
-
-                    <p:outputLabel value="Obervação:  "/>
-                    <p:outputLabel value="#{inquilinoController.selected.mesinquilino}"/>
 
                 </h:panelGrid>   
             </h:form>
