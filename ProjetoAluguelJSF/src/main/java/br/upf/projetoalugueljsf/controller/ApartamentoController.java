@@ -34,10 +34,9 @@ public class ApartamentoController implements Serializable {
 
     @EJB
     private br.upf.projetoalugueljsf.facade.ApartamentoFacade ejbFacade;
-    //objeto que representa um apartamento
     ApartamentoEntity apartamento = new ApartamentoEntity();
 
-    //objeto que representa uma lista de apartamentos
+    
     private List<ApartamentoEntity> apartamentoList = new ArrayList<>();
 
     private ApartamentoEntity selected;

@@ -44,7 +44,7 @@ public class InquilinoEntity {
     
     @Basic(optional = false) 
     @NotNull 
-    @Size(min = 1, max = 11) 
+    @Size(min = 1, max = 15) 
     @Column(name = "cpf")
     private String cpf;
     

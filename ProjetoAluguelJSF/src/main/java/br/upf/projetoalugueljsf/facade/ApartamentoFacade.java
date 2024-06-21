@@ -5,6 +5,7 @@ import jakarta.ejb.Stateless;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.Query;
+import jakarta.persistence.criteria.CriteriaQuery;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,9 +35,7 @@ public class ApartamentoFacade extends AbstractFacade<ApartamentoEntity> {
     public List<ApartamentoEntity> buscarTodos() {
         entityList = new ArrayList<>();
         try {
-            //utilizando JPQL para construir a query 
             Query query = getEntityManager().createQuery("SELECT p FROM ApartamentoEntity p order by p.id");
-            //verifica se existe algum resultado para não gerar excessão
             if (!query.getResultList().isEmpty()) {
                 entityList = (List<ApartamentoEntity>) query.getResultList();
             }
@@ -45,4 +44,5 @@ public class ApartamentoFacade extends AbstractFacade<ApartamentoEntity> {
         }
         return entityList;
     }
+
 }

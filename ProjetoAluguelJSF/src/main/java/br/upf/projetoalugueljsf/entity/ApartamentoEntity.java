@@ -10,10 +10,13 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
+import jakarta.xml.bind.annotation.XmlTransient;
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.Objects;
 
 /**
@@ -60,6 +63,9 @@ public class ApartamentoEntity implements Serializable{
     @NotNull 
     @Column(name = "metragem")
     private Float metragem;
+    
+    @OneToMany(mappedBy = "idApartamento")
+    private Collection<InquilinoEntity> inquilinoCollection;
 
     @Override
     public int hashCode() {
@@ -155,6 +161,15 @@ public class ApartamentoEntity implements Serializable{
 
     public void setMetragem(Float metragem) {
         this.metragem = metragem;
+    }
+
+    @XmlTransient
+    public Collection<InquilinoEntity> getInquilinoCollection() {
+        return inquilinoCollection;
+    }
+
+    public void setInquilinoCollection(Collection<InquilinoEntity> inquilinoCollection) {
+        this.inquilinoCollection = inquilinoCollection;
     }
     
 }

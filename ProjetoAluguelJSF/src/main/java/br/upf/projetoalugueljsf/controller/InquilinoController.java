@@ -3,6 +3,7 @@ package br.upf.projetoalugueljsf.controller;
 import br.upf.projetoalugueljsf.entity.ApartamentoEntity;
 import br.upf.projetoalugueljsf.entity.InquilinoEntity;
 import br.upf.projetoalugueljsf.facade.InquilinoFacade;
+import jakarta.annotation.PostConstruct;
 import jakarta.ejb.EJB;
 import jakarta.ejb.EJBException;
 import jakarta.inject.Named;
@@ -26,6 +27,11 @@ public class InquilinoController implements Serializable {
     private br.upf.projetoalugueljsf.facade.InquilinoFacade ejbFacade;
 
     public InquilinoController() {
+    }
+    
+    @PostConstruct
+    public void init() {
+        selected = new InquilinoEntity();
     }
 
     private InquilinoEntity inquilino = new InquilinoEntity();

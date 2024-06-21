@@ -64,7 +64,7 @@
                             </f:facet>
                             <h:outputText value="#{item.mesinquilino}"/>
                         </p:column>
-                        
+
                         <p:column width="8%" sortBy="#{item.idApartamento}" filterBy="#{item.idApartamento}"
                                   filterMatchMode="contains">
                             <f:facet name="header">
@@ -117,9 +117,9 @@
                     <p:inputText id="iptNome" size="40" label="Nome" required="true" 
                                  requiredMessage="O atributo nome é obrigatório"
                                  value="#{inquilinoController.selected.nome}" maxlength="50" />   
-                    
+
                     <p:outputLabel id="oplCPF" value="CPF:" for="iptCPF"/>
-                    <p:inputText id="iptCPF" size="40" label="CPF" required="true" 
+                    <p:inputMask mask="999.999.999-99" id="iptCPF" size="40" label="CPF" required="true" 
                                  requiredMessage="O atributo CPF é obrigatório"
                                  value="#{inquilinoController.selected.cpf}" maxlength="15" />   
 
@@ -128,12 +128,12 @@
                                  mask="99/99/9999" required="true" requiredMessage="O atributo data de nascimento é obrigatório">
                         <f:convertDateTime pattern="dd/MM/yyyy" timeZone="America/Sao_Paulo" />
                     </p:inputMask>                  
-                    
+
                     <p:outputLabel id="oplMesInquilino" value="MesInquilino:" for="iptMesInquilino"/>
                     <p:inputText id="iptMesInquilino" size="40" label="MesInquilino" required="true" 
                                  requiredMessage="O atributo MesInquilino é obrigatório"
                                  value="#{inquilinoController.selected.mesinquilino}" maxlength="10" /> 
-                    
+
                     <p:outputLabel value="Apartamento: " for="idApartamento" />
                     <p:selectOneMenu id="idApartamento" value="#{inquilinoController.selected.idApartamento}" 
                                      required="false" requiredMessage="O atributo apartamento é obrigatório!"
@@ -163,40 +163,37 @@
                     <p:inputText id="iptId" size="10" label="ID" disabled="true"
                                  value="#{inquilinoController.selected.id}"  />
 
-                    <p:outputLabel id="oplDatahorareg" for="ipmDatahorareg" value="Registro"  />
-                    <p:inputText id="ipmDatahorareg" value="#{inquilinoController.selected.datahorareg}"  disabled="true">
-                        <f:convertDateTime pattern="dd/MM/yy HH:mm" timeZone="America/Sao_Paulo" />
-                    </p:inputText>
-
                     <p:outputLabel id="oplNome" value="Nome:" for="iptNome"/>
                     <p:inputText id="iptNome" size="40" label="Nome" required="true" 
                                  requiredMessage="O atributo nome é obrigatório"
-                                 value="#{inquilinoController.selected.nome}" maxlength="50" />
+                                 value="#{inquilinoController.selected.nome}" maxlength="50" />   
+
+                    <p:outputLabel id="oplCPF" value="CPF:" for="iptCPF"/>
+                    <p:inputText id="iptCPF" size="40" label="CPF" required="true" 
+                                 requiredMessage="O atributo CPF é obrigatório"
+                                 value="#{inquilinoController.selected.cpf}" maxlength="15" />   
 
                     <p:outputLabel id="oplDataNascimento" for="ipmDataNascimento" value="Data de Nascimento"  />
                     <p:inputMask id="ipmDataNascimento" value="#{inquilinoController.selected.dataNascimento}" 
                                  mask="99/99/9999" required="true" requiredMessage="O atributo data de nascimento é obrigatório">
                         <f:convertDateTime pattern="dd/MM/yyyy" timeZone="America/Sao_Paulo" />
-                    </p:inputMask>
+                    </p:inputMask>                  
 
-                    <p:outputLabel id="oplEmail" value="Email:" for="iptEmail"/>
-                    <p:inputText id="iptEmail" size="40" label="Nome" required="true" 
-                                 requiredMessage="O atributo email é obrigatório" validatorMessage="Campo email é inválido"
-                                 value="#{inquilinoController.selected.email}" maxlength="50" >
-                        <f:validateRegex pattern="[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})"  />
-                    </p:inputText>
+                    <p:outputLabel id="oplMesInquilino" value="MesInquilino:" for="iptMesInquilino"/>
+                    <p:inputText id="iptMesInquilino" size="40" label="MesInquilino" required="true" 
+                                 requiredMessage="O atributo MesInquilino é obrigatório"
+                                 value="#{inquilinoController.selected.mesinquilino}" maxlength="10" /> 
 
-                    <p:outputLabel id="oplSenha" value="Senha:" for="iptSenha"/>
-                    <p:inputText id="iptSenha" size="40" label="Senha" required="true" 
-                                 requiredMessage="O atributo senha é obrigatório"
-                                 value="#{inquilinoController.selected.senha}" />
-
-                    <p:outputLabel id="oplIdade" value="Idade (anos):" for="iptIdade"/>
-                    <p:inputNumber id="iptIdade" value="#{inquilinoController.selected.idade}" minValue="1" decimalPlaces="0" />
-
-                    <p:outputLabel id="oplObservacao" value="Obervação:  " for="somObservacao"/>
-                    <p:inputTextarea id="somObservacao" rows="4" cols="40" autoResize="false" 
-                                     value="#{inquilinoController.selected.mesinquilino}"/>
+                    <p:outputLabel value="Apartamento: " for="idApartamento" />
+                    <p:selectOneMenu id="idApartamento" value="#{inquilinoController.selected.idApartamento}" 
+                                     required="false" requiredMessage="O atributo apartamento é obrigatório!"
+                                     panelStyle="width:180px" filter="true" filterMatchMode="contains">
+                        <f:selectItem itemLabel="Selecione um apartamento..."/>                        
+                        <f:selectItems value="#{apartamentoController.apartamentoAll()}"
+                                       var="idApartamentoItem"
+                                       itemValue="#{idApartamentoItem}"
+                                       itemLabel="#{idApartamentoItem.apartamento}"/>
+                    </p:selectOneMenu>
 
                 </h:panelGrid>   
                 <p:commandButton id="btnSalvarEdicao" value="Salvar" update="@form, :frmList" 
@@ -220,11 +217,11 @@
                         <f:convertDateTime pattern="dd/MM/yyyy" timeZone="America/Sao_Paulo" />
                     </p:outputLabel>
 
-                    <p:outputLabel value="Email: " />                    
-                    <p:outputLabel value="#{inquilinoController.selected.email}" />
+                    <p:outputLabel value="Mes Inquilino " />                    
+                    <p:outputLabel value="#{inquilinoController.selected.mesinquilino}" />
 
-                    <p:outputLabel value="Idade (anos):"/>
-                    <p:outputLabel value="#{inquilinoController.selected.idade}" />
+                    <p:outputLabel value="Apartamento:"/>
+                    <p:outputLabel value="#{inquilinoController.selected.idApartamento.apartamento}" />
 
                     <p:outputLabel value="Obervação:  "/>
                     <p:outputLabel value="#{inquilinoController.selected.mesinquilino}"/>
