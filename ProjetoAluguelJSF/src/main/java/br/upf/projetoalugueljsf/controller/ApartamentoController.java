@@ -5,7 +5,6 @@
 package br.upf.projetoalugueljsf.controller;
 
 import br.upf.projetoalugueljsf.entity.ApartamentoEntity;
-import br.upf.projetoalugueljsf.entity.InquilinoEntity;
 import jakarta.ejb.EJB;
 import jakarta.ejb.EJBException;
 import jakarta.inject.Named;
@@ -16,9 +15,7 @@ import jakarta.faces.context.FacesContext;
 import jakarta.faces.convert.Converter;
 import jakarta.faces.convert.FacesConverter;
 import java.io.Serializable;
-import java.sql.Timestamp;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -57,7 +54,7 @@ public class ApartamentoController implements Serializable {
         return ejbFacade.buscarTodos();
     }
 
-    public ApartamentoEntity getApartamento() {
+    public ApartamentoEntity getApartamento(Integer key) {
         return apartamento;
     }
 
@@ -161,5 +158,46 @@ public class ApartamentoController implements Serializable {
                 "Registro excluído com sucesso!");
     }
 
+    @FacesConverter(forClass = ApartamentoEntity.class)
+    public static class ApartamentoControllerConverter implements Converter {
+
+        @Override
+        public Object getAsObject(FacesContext facesContext, UIComponent component, String value) {
+            if (value == null || value.length() == 0) {
+                return null;
+            }
+            ApartamentoController controller
+                    = (ApartamentoController) facesContext.getApplication().getELResolver().
+                            getValue(facesContext.getELContext(),
+                                    null, "apartamentoController");
+            return controller.getApartamento(getKey(value));
+        }
+
+        java.lang.Integer getKey(String value) {
+            java.lang.Integer key;
+            key = Integer.valueOf(value);
+            return key;
+        }
+
+        String getStringKey(java.lang.Integer value) {
+            StringBuilder sb = new StringBuilder();
+            sb.append(value);
+            return sb.toString();
+        }
+
+        @Override
+        public String getAsString(FacesContext facesContext,
+                UIComponent component, Object object) {
+            if (object == null) {
+                return null;
+            }
+            if (object instanceof ApartamentoEntity) {
+                ApartamentoEntity o = (ApartamentoEntity) object;
+                return getStringKey(o.getId());
+            } else {
+                return null;
+            }
+        }
+    }
 //    
 }

@@ -35,7 +35,7 @@ public class ApartamentoFacade extends AbstractFacade<ApartamentoEntity> {
         entityList = new ArrayList<>();
         try {
             //utilizando JPQL para construir a query 
-            Query query = getEntityManager().createQuery("SELECT p FROM ApartamentoEntity p order by p.apartamento");
+            Query query = getEntityManager().createQuery("SELECT p FROM ApartamentoEntity p order by p.id");
             //verifica se existe algum resultado para não gerar excessão
             if (!query.getResultList().isEmpty()) {
                 entityList = (List<ApartamentoEntity>) query.getResultList();

@@ -46,28 +46,4 @@ public class InquilinoFacade extends AbstractFacade<InquilinoEntity> {
         return entityList;
     }
 
-    /**
-     * Buscar uma inquilino por email
-     * @param email
-     * @param senha
-     * @return 
-     */
-    public InquilinoEntity buscarPorEmail(String email, String senha) {
-        InquilinoEntity inquilino = new InquilinoEntity();
-        try {
-            //utilizando JPQL para construir a query 
-            Query query = getEntityManager()
-                    .createQuery("SELECT p FROM InquilinoEntity p WHERE p.email = :email AND p.senha = :senha");
-            query.setParameter("email", email);
-            query.setParameter("senha", senha);
-
-            //verifica se existe algum resultado para não gerar excessão
-            if (!query.getResultList().isEmpty()) {
-                inquilino = (InquilinoEntity) query.getSingleResult();
-            }
-        } catch (Exception e) {
-            System.out.println("Erro: " + e);
-        }
-        return inquilino;
-    }
 }

@@ -33,9 +33,9 @@ public class ApartamentoEntity implements Serializable{
     @Column(name = "id")
     private int id;
     
-    @Basic(optional = false) //atributo não é opcional
-    @NotNull //definido como obrigatório
-    @Size(min = 1, max = 10) //quantidade min e max de caracteres
+    @Basic(optional = false)
+    @NotNull 
+    @Size(min = 1, max = 10) 
     @Column(name = "apartamento")
     private String apartamento;
     

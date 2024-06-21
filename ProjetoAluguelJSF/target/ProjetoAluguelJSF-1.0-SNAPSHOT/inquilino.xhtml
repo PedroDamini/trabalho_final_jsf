@@ -128,17 +128,13 @@
                                  mask="99/99/9999" required="true" requiredMessage="O atributo data de nascimento é obrigatório">
                         <f:convertDateTime pattern="dd/MM/yyyy" timeZone="America/Sao_Paulo" />
                     </p:inputMask>                  
-
-                    <p:outputLabel id="oplObservacao" value="Obervação:  " for="somObservacao"/>
-                    <p:inputTextarea id="somObservacao" rows="4" cols="40" autoResize="false" 
-                                     value="#{inquilinoController.selected.mesinquilino}"/>
                     
                     <p:outputLabel id="oplMesInquilino" value="MesInquilino:" for="iptMesInquilino"/>
                     <p:inputText id="iptMesInquilino" size="40" label="MesInquilino" required="true" 
                                  requiredMessage="O atributo MesInquilino é obrigatório"
                                  value="#{inquilinoController.selected.mesinquilino}" maxlength="10" /> 
                     
-                    <p:outputLabel value="Apartamento: " for="idApartamento" />
+<!--                    <p:outputLabel value="Apartamento: " for="idApartamento" />
                     <p:selectOneMenu id="idApartamento" value="#{inquilinoController.selected.idApartamento}" 
                                      required="false" requiredMessage="O atributo apartamento é obrigatório!"
                                      panelStyle="width:180px" filter="true" filterMatchMode="contains">
@@ -147,7 +143,7 @@
                                        var="idApartamentoItem"
                                        itemValue="#{idApartamentoItem}"
                                        itemLabel="#{idApartamentoItem.apartamento}"/>
-                    </p:selectOneMenu>
+                    </p:selectOneMenu>-->
 
                 </h:panelGrid>   
 
