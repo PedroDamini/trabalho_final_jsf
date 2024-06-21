@@ -39,3 +39,6 @@ values ('Pedro', '01-01-2002', current_date, 22, 'user@gmail.com', '123', 'obs')
 
 insert into apartamento(apartamento, aluguel, condominio, endereco, metragem)
 values('101A', 1080.50, 205.25, 'Rua Tal', 93);
+
+insert into inquilino(nome, cpf, datanascimento, mesinquilino, id_apartamento)
+values('Pedro', '000.111.222-64', '01-01-2000', 4, 1);

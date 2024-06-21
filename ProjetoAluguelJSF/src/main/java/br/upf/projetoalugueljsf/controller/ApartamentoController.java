@@ -53,6 +53,10 @@ public class ApartamentoController implements Serializable {
         this.selected = selected;
     }
 
+    public List<ApartamentoEntity> apartamentoAll() {
+        return ejbFacade.buscarTodos();
+    }
+
     public ApartamentoEntity getApartamento() {
         return apartamento;
     }
@@ -76,7 +80,6 @@ public class ApartamentoController implements Serializable {
         }
         return id;
     }
-
 
     public ApartamentoEntity prepareAdicionar() {
         apartamento = new ApartamentoEntity();
@@ -135,7 +138,7 @@ public class ApartamentoController implements Serializable {
         }
     }
 
-     private void exibirMensagem() {
+    private void exibirMensagem() {
         //criando mensagem para exibir...
         String msg = "Apartamento adicionado: " + apartamento.getApartamento();
         //capturando mensagem criada...
@@ -144,17 +147,17 @@ public class ApartamentoController implements Serializable {
     }
 
     public void adicionarApartamento() {
-        persist(ApartamentoController.PersistAction.CREATE, 
+        persist(ApartamentoController.PersistAction.CREATE,
                 "Registro incluído com sucesso!");
     }
 
     public void editarApartamento() {
-        persist(ApartamentoController.PersistAction.UPDATE, 
+        persist(ApartamentoController.PersistAction.UPDATE,
                 "Registro alterado com sucesso!");
     }
 
     public void deletarApartamento() {
-        persist(ApartamentoController.PersistAction.DELETE, 
+        persist(ApartamentoController.PersistAction.DELETE,
                 "Registro excluído com sucesso!");
     }
 
