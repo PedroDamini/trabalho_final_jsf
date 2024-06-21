@@ -104,8 +104,6 @@ public class InquilinoEntity {
         }
         return Objects.equals(this.idApartamento, other.idApartamento);
     }
-    
-    
 
     public int getId() {
         return id;

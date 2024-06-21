@@ -11,6 +11,7 @@ import jakarta.enterprise.context.SessionScoped;
 import jakarta.faces.application.FacesMessage;
 import jakarta.faces.context.FacesContext;
 import jakarta.inject.Named;
+import jakarta.servlet.http.HttpSession;
 import java.io.Serializable;
 
 /**
@@ -47,9 +48,13 @@ public class LoginController implements Serializable {
     }
 
     public String validarLogin() {
+        FacesContext context = FacesContext.getCurrentInstance();
+        HttpSession session = (HttpSession) context.getExternalContext().getSession(false);
+        
         PessoaEntity pessoaDB = ejbFacade.buscarPorEmail(pessoa.getEmail(), pessoa.getSenha());
         if ((pessoaDB != null && pessoaDB.getId() != null)) {
-            return "/pessoa.xhtml?faces-redirect=true";
+            session.setAttribute("pessoaLogada", pessoaDB);
+            return "/admin/pessoa.xhtml?faces-redirect=true";
         } else {
             FacesMessage fm = new FacesMessage(
                     FacesMessage.SEVERITY_ERROR,
@@ -58,6 +63,13 @@ public class LoginController implements Serializable {
             FacesContext.getCurrentInstance().addMessage(null, fm);
             return null;
         }
+    }
+    
+    public String logout(){
+        FacesContext context = FacesContext.getCurrentInstance();
+        HttpSession session = (HttpSession) context.getExternalContext().getSession(false);
+        session.invalidate();
+        return "/login.xhtml?faces-redicert=true";
     }
 
 }

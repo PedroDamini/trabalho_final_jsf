@@ -72,7 +72,7 @@ public class ApartamentoEntity implements Serializable{
         int hash = 7;
         hash = 37 * hash + this.id;
         hash = 37 * hash + Objects.hashCode(this.apartamento);
-        hash = 37 * hash + Objects.hashCode(this.aluguel);
+         hash = 37 * hash + Objects.hashCode(this.aluguel);
         hash = 37 * hash + Objects.hashCode(this.condominio);
         hash = 37 * hash + Objects.hashCode(this.endereco);
         hash = 37 * hash + Objects.hashCode(this.metragem);

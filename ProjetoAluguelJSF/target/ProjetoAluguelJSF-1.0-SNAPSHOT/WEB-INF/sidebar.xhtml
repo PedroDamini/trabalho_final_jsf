@@ -16,9 +16,10 @@
         <div class="layout-menu-container">
             <h:form id="menuform">
                 <pm:menu widgetVar="ManhattanMenuWidget">
-                    <p:menuitem id="mnuPessoa" value="Pessoa" icon="pi pi-fw pi-home" outcome="pessoa.xhtml"/>
-                    <p:menuitem id="mnuApartamento" value="Apartamento" icon="pi pi-fw pi-home" outcome="index.xhtml"/>
-                    <p:menuitem id="mnuInquilino" value="Inquilino" icon="pi pi-fw pi-home" outcome="inquilino.xhtml"/>
+                    <p:menuitem id="mnuPessoa" value="Pessoa" icon="pi pi-fw pi-home" outcome="/admin/pessoa.xhtml"/>
+                    <p:menuitem id="mnuApartamento" value="Apartamento" icon="pi pi-fw pi-home" outcome="/admin/index.xhtml"/>
+                    <p:menuitem id="mnuInquilino" value="Inquilino" icon="pi pi-fw pi-home" outcome="/admin/inquilino.xhtml"/>
+                    <p:menuitem id="mnuSair" value="Sair" icon="pi pi-fw pi-sign-out" action="#{loginController.logout()}"/>
                 </pm:menu>
             </h:form>
         </div>

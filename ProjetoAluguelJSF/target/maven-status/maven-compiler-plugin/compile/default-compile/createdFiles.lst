@@ -1,4 +1,5 @@
 br\upf\projetoalugueljsf\facade\InquilinoFacade.class
+br\upf\projetoalugueljsf\FiltroAdministrativo.class
 br\upf\projetoalugueljsf\entity\InquilinoEntity.class
 br\upf\projetoalugueljsf\entity\PessoaEntity.class
 br\upf\projetoalugueljsf\facade\AbstractFacade.class
